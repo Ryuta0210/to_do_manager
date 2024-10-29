@@ -1,0 +1,65 @@
+textarea {
+  resize: none;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.todo_new {
+  width: calc(100vw - 170px);
+  margin: 25px 20px 25px 30px;
+}
+
+.todo_form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 各行の間隔 */
+}
+
+.form-row {
+  display: flex;
+  gap: 20px; /* 各フィールド間の間隔 */
+  flex-wrap: wrap; /* 画面が小さい場合に折り返し */
+}
+
+.form-group, .form-group-b {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-b{
+  margin-top: 20px;
+}
+
+.todo_title {
+  height: 20px;
+  width: 350px;
+}
+
+.date-field {
+  height: 20px;
+  width: 100px;
+}
+
+.user-select {
+  height: 26px; /* 選択ボックスの高さ調整 */
+  width: 150px;
+}
+
+.todo_contentform_ {
+  height: 100px;
+  width: 90%; /* 内容のフィールドは幅をいっぱいに */
+}
+
+.submit-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  align-self: flex-start; /* 左揃えにする */
+  background-color: #000000; /* 登録ボタンの背景色 */
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}

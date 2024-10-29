@@ -1,0 +1,7 @@
+<%= @todo.title %>
+<%= @todo.content %>
+<%= @todo.start_date %>
+<%= @todo.dead_date %>
+<% @todo.users.each do |user| %>
+<%= user.full_name %>
+<% end %>

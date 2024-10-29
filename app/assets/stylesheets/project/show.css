@@ -1,0 +1,23 @@
+.project_details{
+  height: 600px;
+}
+
+.project_summary{
+  height: 150px;
+  border-bottom: 1px solid #000;
+}
+
+.project_roadmap{
+  margin-top: 10px;
+  height: 400px;
+  background-color: aqua;
+}
+
+.each_step{
+  display: flex;
+}
+
+.step_todo{
+  justify-content: space-around;
+  width:500px;
+}

@@ -1,0 +1,53 @@
+<div class="project_details">
+  <div class="project_summary">
+  <%= @project.name %>
+
+  <%= @project.description%>
+
+  <% @project.users.each do |user| %>
+  <%= user.full_name %>
+  <% end %>
+
+  <% @project.steps.each do |step| %>
+  <%= step.step_number %>
+    <% step.todos.each do |todo| %>
+    <%= link_to todo.title, todo_path(todo) %>
+    <% end %>
+  <% end %>
+
+<table border="1" cellspacing="0" cellpadding="10">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @project.name %></td>
+      <td><%= @project.description %></td>
+      <td>
+        <% @project.users.each do |user| %>
+        <%= user.full_name %></br>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class= "project_roadmap">
+  <% @project.steps.each do |step| %>
+  <div class="each_step">
+    <div class="step_number">
+      <p>Step<%= step.step_number %></p>
+    </div>
+    <% step.todos.each do |todo| %>
+    <div class="step_todo">
+      <%= link_to todo.title, todo_path(todo) %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

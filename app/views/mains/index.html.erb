@@ -1,0 +1,64 @@
+<div class="main_view">
+  <div class="main_view_projects">
+    <span>■ アサインされているプロジェクト</span>
+
+    <div class="main_view_project_list_box">
+      <table border="1" cellspacing="0" cellpadding="10" class="project_table">
+      <thead>
+      <tr>
+        <th class="project_checkbox">選択</th>
+        <th class="project_title">タイトル</th>
+        <th class="project_content">内容</th>
+        <th class="project_progress">進捗率</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td class="project_checkbox">
+            <input type="checkbox" id="project_<%= project.id %>" name="project_<%= project.id %>">
+          </td>
+          <td class="project_title"><%= project.name %></td>
+          <td class="project_description"><%= project.description %></td>
+          <td class="project_progress"></td>
+        </tr>
+      <% end %>
+      </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="main_view_border">
+  </div>
+
+  <div class="main_view_todos">
+    <span>■ 本日のTo Do</span>
+
+    <div class="main_view_todo_list_box">
+      <table border="1" cellspacing="0" cellpadding="10" class="todo_table">
+      <thead>
+      <tr>
+        <th class="todo_checkbox">選択</th>
+        <th class="todo_title">タイトル</th>
+        <th class="todo_content">内容</th>
+        <th class="todo_deadline">締切日</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @todos.each do |todo| %>
+        <tr>
+          <td class="todo_checkbox">
+            <input type="checkbox" id="todo_<%= todo.id %>" name="todo_<%= todo.id %>">
+          </td>
+          <td class="todo_title"><%= todo.title %></td>
+          <td class="todo_content"><%= todo.content %></td>
+          <td class="todo_deadline small-text"><%= todo.dead_date %></td>
+        </tr>
+      <% end %>
+      </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+

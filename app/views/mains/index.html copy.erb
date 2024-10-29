@@ -1,0 +1,18 @@
+<div class="main_menu">
+  <div class="main_menu_top">
+    <img src="<%= image_path('top_logo_top.png') %>" class="top_logo_top" id="top_logo_top" style="cursor: pointer;">
+      <div class="new_menu" id="new_menu">
+        <a href="<%= new_todo_path %>" class="menu_todo">To Do</a>
+        <a href="<%= new_project_path %>" class="new_menu_project">Project</a>
+      </div>
+    </div>
+  <div class="main_menu_bottom">
+    <img src="<%= image_path("top_logo_bottom_left.png")%>" class="top_logo_bottom_left"), id="top_logo_bottom_left" style="cursor: pointer;">
+        <div class="confirm_menu" id="confirm_menu">
+          <a href="<%= my_todos_todos_path %>" class="my_projects_todo">To Do</a>
+          <a href="<%= my_projects_projects_path %>" class="my_projects_menu">Project</a>
+        </div>
+
+    <%=link_to image_tag("top_logo_bottom_right.png", class:"top_logo_bottom_right"), "/"%>
+  </div>
+</div>

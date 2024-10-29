@@ -1,0 +1,15 @@
+<div class="my_projects">
+  My projects index
+</div>
+
+<% if @projects.any? %>
+  <ul>
+    <% @projects.each do |project| %>
+      <li>
+        <%= link_to project.name, project_path(project) %> - <%= project.description %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No projects found for you.</p>
+<% end %>

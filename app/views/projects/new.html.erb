@@ -4,7 +4,7 @@
   <div class="project_form">
     <div class="project_form_head">
       <div class="project_form_left">
-        <%= form_with model: @project_step, url: projects_path, local: true do |f| %>
+        <%= form_with model: @project_step, url: projects_path, local: true, html: { class: "project_new_form" } do |f| %>
 
         <div class="project_form_a">
           <%= f.label :name, "タイトル" %>
@@ -37,16 +37,22 @@
     <div id="steps_container">
       <% (1..50).each do |step| %>
         <div class="step_block" id="step_<%= step %>" style="display: <%= step == 1 ? 'block' : 'none' %>;">
-          <%= f.label :step_number, "Step #{step}" %>
+          <%= f.label :step_number, "Step #{step}", class: "bold-label" %>
           <%= f.hidden_field :step_number, value: step, class: "step_number_field", name: "project_step_form[step_number][]" %>
           <%= f.label :todo_ids, "To Doを選択" %>
+
           <div class="step_todos">
+            <div class="todo-search">
+              <input type="text" class="todo-search-input" data-step="<%= step %>" placeholder="ToDoを検索">
+            </div>
+            <div class=checkboxes>
             <% Todo.all.each do |todo| %>
               <div class="checkbox">
                 <%= check_box_tag "project_step_form[todo_ids][#{step}][]", todo.id, false, id: "step_#{step}_todo_#{todo.id}", class: "step_todo_checkbox", data: { step: step } %>
-                <%= label_tag "step_#{step}_todo_#{todo.id}", todo.title %>
+                <%= label_tag "step_#{step}_todo_#{todo.id}", todo.title.truncate(10, omission: '...') %>
               </div>
             <% end %>
+            </div>
           </div>
         </div>
       <% end %>
@@ -82,7 +88,7 @@
 
     <div class="triangle-up"></div>
 
-    <%= f.submit "登録する", class: "submit-button" %>
+    <%= f.submit "登録する", class: "submit-button", id: "submit_button" %>
     <% end %>
   </div>
 

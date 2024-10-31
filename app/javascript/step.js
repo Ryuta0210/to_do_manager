@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const stepImage = document.querySelector(`#step_image_${step} img`);
     if (stepImage) {
       if (selectedTitles.length >= 11) {
-        console.log("OK")
+        console.log("OK");
         stepImage.src = "/assets/step_image15"; // 図形を変更
         stepImage.classList.add("step_image15"); // クラス名を追加
       } else {

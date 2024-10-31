@@ -102,7 +102,7 @@ body{
 .main_view_border{
   margin-left: 10px;
   height: 10px;
-  border-bottom: 1px solid rgb(255, 230, 230);
+  border-bottom: 3px solid rgb(247, 173, 173);
 }
 
 .main_view_todos{

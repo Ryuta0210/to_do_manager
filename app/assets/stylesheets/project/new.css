@@ -1,3 +1,5 @@
+
+
 .project_new{
   width: calc(100vw - 170px);
   margin: 25px 20px 25px 30px;
@@ -18,7 +20,6 @@
 
 .project_form_right{
   width: 60%;
-  border-left: 1px black solid;
   padding-left: 30px;
 }
 
@@ -77,22 +78,34 @@
 }
 
 .project_new_border{
-  border-top: 1px solid black ;
-  margin-top: 15px;
+  border-top: 3px solid rgb(247, 173, 173) ;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
+.bold-label {
+  font-weight: bold; /* 太文字にする */
+}
 
 .step_block {
   margin-bottom: 20px;
 }
 
 .step_todos {
-  display: flex;
   flex-wrap: wrap;
   gap: 10px; /* チェックボックス間のスペースを調整 */
+  width: 95%;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  height: 70px;
+  overflow: scroll;
 }
 
-.step_todos .checkbox {
+.todo-search{
+  margin-left: 5px;
+}
+
+.checkboxes {
   display: flex;
   align-items: center;
   margin-right: 10px; /* チェックボックスとラベルの間のスペース */
@@ -115,20 +128,20 @@
 .step_image_2 {
   position: relative;
   display: inline-block;
-  margin-left: -50px;
+  margin-left: -60px;
   z-index: 1
 }
 
 
 .step_preview_step_image{
-  width: 250px; /* 必要に応じて画像のサイズを調整 */
+  width: 450px;
   height: 250px;
 }
 
 .step_preview_step_image_after2{
-  width: 250px; /* 必要に応じて画像のサイズを調整 */
+  width: 450px;
   height: 250px;
-  margin-left: -50px;
+  margin-left: -58px;
 }
 
 .step_image15{
@@ -150,7 +163,7 @@
 .step_preview_step_number_after2{
   position: absolute;
   top: 22px;
-  left: 30%;
+  left: 40%;
   transform: translate(-50%, -50%); /* 中央に配置するための調整 */
   font-size: 18px;
   font-weight: bold;

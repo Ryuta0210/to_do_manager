@@ -8,7 +8,7 @@
 
         <div class="project_form_a">
           <%= f.label :name, "タイトル" %>
-          <%= f.text_field :name, class:"project_name" %>
+          <%= f.text_field :name, class: "project_name" %>
         </div>
 
         <div class="project_form_b">
@@ -22,10 +22,6 @@
                 </div>
               <% end %>
             </div>
-            <div class="project_users_choice_between">
-            </div>
-            <div class="project_users_choice_result">
-            </div>
           </div>
         </div>
       </div>
@@ -33,58 +29,65 @@
       <div class="project_form_right">
         <div class="project_form_a">
           <%= f.label :description, "内容" %>
-          <%= f.text_field :description, class:"project_description" %>
+          <%= f.text_field :description, class: "project_form_description" %>
         </div>
       </div>
     </div>
 
-      <div id="steps_container">
-        <div class="step_block">
-          <%= f.label :step_number, "Step 1" %>
-          <%= f.hidden_field :step_number, value: 1, class: "step_number_field",name: "project_step_form[step_number][]" %>
+    <div id="steps_container">
+      <% (1..50).each do |step| %>
+        <div class="step_block" id="step_<%= step %>" style="display: <%= step == 1 ? 'block' : 'none' %>;">
+          <%= f.label :step_number, "Step #{step}" %>
+          <%= f.hidden_field :step_number, value: step, class: "step_number_field", name: "project_step_form[step_number][]" %>
           <%= f.label :todo_ids, "To Doを選択" %>
           <div class="step_todos">
             <% Todo.all.each do |todo| %>
               <div class="checkbox">
-                <%= check_box_tag "project_step_form[todo_ids][1][]", todo.id, false, id: "step_1_todo_#{todo.id}" %>
-                <%= label_tag "step_1_todo_#{todo.id}", todo.title %>
-              </div>
-            <% end %>
-          </div>
-
-          <%= f.label :step_number, "Step 2" %>
-          <%= f.hidden_field :step_number, value: 2, class: "step_number_field", name: "project_step_form[step_number][]" %>
-          <%= f.label :todo_ids, "To Doを選択" %>
-          <div class="step_todos">
-            <% Todo.all.each do |todo| %>
-              <div class="checkbox">
-                <%= check_box_tag "project_step_form[todo_ids][2][]", todo.id, false, id: "step_2_todo_#{todo.id}" %>
-                <%= label_tag "step_2_todo_#{todo.id}", todo.title %>
+                <%= check_box_tag "project_step_form[todo_ids][#{step}][]", todo.id, false, id: "step_#{step}_todo_#{todo.id}", class: "step_todo_checkbox", data: { step: step } %>
+                <%= label_tag "step_#{step}_todo_#{todo.id}", todo.title %>
               </div>
             <% end %>
           </div>
         </div>
+      <% end %>
+    </div>
+
+    <button type="button" id="add_step_button">Add Step</button>
+    <button type="button" id="delete_step_button">Delete Step</button>
+
+    <div class="project_new_border"></div>
+
+    <span>Stepプレビュー</span>
+    
+    <div class="project_form_preview" id="project_form_preview">
+      <!-- 初期のStepプレビュー -->
+      <div class="step_image" id="step_image_1">
+        <%= image_tag "step_image", class:"step_preview_step_image"%>
+        <div class="step_preview_step_number_1">Step 1</div>
+        <div class="step_todo_titles_1" id="step_1_todo_titles"></div>
+      </div>
+    </div>
+
+    <div class="original_sign">
+      <div class="original_sign1">
+        <div class=original_sign1_top>
+          <div class="original_sign1_top_a"></div>
+          <div class="original_sign1_top_b"></div>
+        </div>
+        <div class="original_sign1_bottom"></div>
       </div>
 
-      <button type="button" id="add_step_button">Add Step</button>
+      <div class="original_sign2"></div>
     </div>
 
-    <div class="project_new_border">
-    </div>
+    <div class="triangle-up"></div>
 
-    <div class="project_form_preview">
-      <span>Stepプレビュー</span>
-    </div>
-
-      <%= f.submit "登録する", class: "submit-button" %>
-    </div>
-    <%end%>
+    <%= f.submit "登録する", class: "submit-button" %>
+    <% end %>
   </div>
-
-
-
 
   <div class="confirm">
     <%= link_to "一覧を確認する", projects_path %>
   </div>
 </div>
+

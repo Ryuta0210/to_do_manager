@@ -67,7 +67,7 @@
   margin-right: 10px;
 }
 
-.project_description{
+.project_form_description{
   width: 90%;
   height: 320px;
 }
@@ -81,9 +81,6 @@
   margin-top: 15px;
 }
 
-.project_form_preview{
-  margin: 10px 0;
-}
 
 .step_block {
   margin-bottom: 20px;
@@ -100,3 +97,104 @@
   align-items: center;
   margin-right: 10px; /* チェックボックスとラベルの間のスペース */
 }
+
+.project_form_preview{
+  margin: 10px 0;
+  display: flex;
+  width: 100vw;
+  overflow-y: scroll;
+}
+
+
+.step_image{
+  position: relative;
+  display: inline-block;
+  z-index: 2
+}
+
+.step_image_2 {
+  position: relative;
+  display: inline-block;
+  margin-left: -50px;
+  z-index: 1
+}
+
+
+.step_preview_step_image{
+  width: 250px; /* 必要に応じて画像のサイズを調整 */
+  height: 250px;
+}
+
+.step_preview_step_image_after2{
+  width: 250px; /* 必要に応じて画像のサイズを調整 */
+  height: 250px;
+  margin-left: -50px;
+}
+
+.step_image15{
+  width: auto;
+  height: 250px;
+}
+
+
+.step_preview_step_number_1{
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 中央に配置するための調整 */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.step_preview_step_number_after2{
+  position: absolute;
+  top: 22px;
+  left: 30%;
+  transform: translate(-50%, -50%); /* 中央に配置するための調整 */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.step_todo_titles_1{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; 
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  max-height: calc(8 * 1.5em);
+}
+
+.step_todo_titles_1 div{
+  flex: 0 0 100%; 
+  box-sizing: border-box; /* 幅の計算にパディングとボーダーを含める */
+  margin-bottom: 5px; /* 各タイトルの間に少しスペースを追加 */
+  margin-left: 20px;
+  border: 1px solid black;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+
+.step_todo_titles_after2{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; 
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  max-height: calc(8 * 1.5em);
+}
+
+.step_todo_titles_after2 div{
+  flex: 0 0 100%; 
+  box-sizing: border-box; /* 幅の計算にパディングとボーダーを含める */
+  margin-bottom: 5px; /* 各タイトルの間に少しスペースを追加 */
+  margin-left: 20px;
+  border: 1px solid black;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+

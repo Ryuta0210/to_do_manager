@@ -4,18 +4,17 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
   end
 
-
   def new
     @project_step = ProjectStepForm.new
+    gon.todos = Todo.all.map { |todo| { id: todo.id, title: todo.title } }
   end
 
   def create
     @project_step = ProjectStepForm.new(project_params)
-    if @project_step.valid?
-      @project_step.save
-      render :new
+    if @project_step.save
+      redirect_to projects_path, notice: 'プロジェクトが作成されました。'
     else
-      render :new,  status: unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -24,8 +23,9 @@ class ProjectsController < ApplicationController
   end
 
   private
+
   def project_params
-    params.require(:project_step_form).permit(:name, :description, step_number:[], user_ids:[], todo_ids:{})
+    params.require(:project_step_form).permit(:name, :description, step_number: [], user_ids: [], todo_ids: {})
   end
 
 end

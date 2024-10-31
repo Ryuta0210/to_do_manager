@@ -8,7 +8,7 @@
 
         <div class="project_form_a">
           <%= f.label :name, "タイトル" %>
-          <%= f.text_field :name, class:"project_name" %>
+          <%= f.text_field :name, class: "project_name" %>
         </div>
 
         <div class="project_form_b">
@@ -22,10 +22,6 @@
                 </div>
               <% end %>
             </div>
-            <div class="project_users_choice_between">
-            </div>
-            <div class="project_users_choice_result">
-            </div>
           </div>
         </div>
       </div>
@@ -33,61 +29,113 @@
       <div class="project_form_right">
         <div class="project_form_a">
           <%= f.label :description, "内容" %>
-          <%= f.text_field :description, class:"project_description" %>
+          <%= f.text_field :description, class: "project_description" %>
         </div>
       </div>
     </div>
 
-      <div id="steps_container">
-        <div class="step_block">
-          <%= f.label :step_number, "Step 1" %>
-          <%= f.hidden_field :step_number, value: 1, class: "step_number_field",name: "project_step_form[step_number][]" %>
-          <%= f.label :todo_ids, "To Doを選択" %>
-          <div class="step_todos">
-            <% Todo.all.each do |todo| %>
-              <div class="checkbox">
-                <%= check_box_tag "project_step_form[todo_ids][1][]", todo.id, false, id: "step_1_todo_#{todo.id}" %>
-                <%= label_tag "step_1_todo_#{todo.id}", todo.title %>
-              </div>
-            <% end %>
-          </div>
-
-          <%= f.label :step_number, "Step 2" %>
-          <%= f.hidden_field :step_number, value: 2, class: "step_number_field", name: "project_step_form[step_number][]" %>
-          <%= f.label :todo_ids, "To Doを選択" %>
-          <div class="step_todos">
-            <% Todo.all.each do |todo| %>
-              <div class="checkbox">
-                <%= check_box_tag "project_step_form[todo_ids][2][]", todo.id, false, id: "step_2_todo_#{todo.id}" %>
-                <%= label_tag "step_2_todo_#{todo.id}", todo.title %>
-              </div>
-            <% end %>
-          </div>
+    <div id="steps_container">
+      <div class="step_block" id="step_1">
+        <%= f.label :step_number, "Step 1" %>
+        <%= f.hidden_field :step_number, value: 1, class: "step_number_field", name: "project_step_form[step_number][]" %>
+        <%= f.label :todo_ids, "To Doを選択" %>
+        <div class="step_todos">
+          <% Todo.all.each do |todo| %>
+            <div class="checkbox">
+              <%= check_box_tag "project_step_form[todo_ids][1][]", todo.id, false, id: "step_1_todo_#{todo.id}" %>
+              <%= label_tag "step_1_todo_#{todo.id}", todo.title %>
+            </div>
+          <% end %>
         </div>
-        <script id="todos-data" type="application/json">
-          <%= Todo.all.to_json(only: [:id, :title]) %>
-        </script>
-
       </div>
-      <button type="button" id="add_step_button">Add Step</button>
+
+      <div class="step_block" id="step_2" style="display:none;">
+        <%= f.label :step_number, "Step 2" %>
+        <%= f.hidden_field :step_number, value: 2, class: "step_number_field", name: "project_step_form[step_number][]" %>
+        <%= f.label :todo_ids, "To Doを選択" %>
+        <div class="step_todos">
+          <% Todo.all.each do |todo| %>
+            <div class="checkbox">
+              <%= check_box_tag "project_step_form[todo_ids][2][]", todo.id, false, id: "step_2_todo_#{todo.id}" %>
+              <%= label_tag "step_2_todo_#{todo.id}", todo.title %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+        <div class="step_block" id="step_3" style="display:none;">
+        <%= f.label :step_number, "Step 3" %>
+        <%= f.hidden_field :step_number, value: 3, class: "step_number_field", name: "project_step_form[step_number][]" %>
+        <%= f.label :todo_ids, "To Doを選択" %>
+        <div class="step_todos">
+          <% Todo.all.each do |todo| %>
+            <div class="checkbox">
+              <%= check_box_tag "project_step_form[todo_ids][3][]", todo.id, false, id: "step_3_todo_#{todo.id}" %>
+              <%= label_tag "step_3_todo_#{todo.id}", todo.title %>
+            </div>
+          <% end %>
+        </div>
+       </div>
+
+       <div class="step_block" id="step_4" style="display:none;">
+  <%= f.label :step_number, "Step 4" %>
+  <%= f.hidden_field :step_number, value: 4, class: "step_number_field", name: "project_step_form[step_number][]" %>
+  <%= f.label :todo_ids, "To Doを選択" %>
+  <div class="step_todos">
+    <% Todo.all.each do |todo| %>
+      <div class="checkbox">
+        <%= check_box_tag "project_step_form[todo_ids][4][]", todo.id, false, id: "step_4_todo_#{todo.id}" %>
+        <%= label_tag "step_4_todo_#{todo.id}", todo.title %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="step_block" id="step_5" style="display:none;">
+  <%= f.label :step_number, "Step 5" %>
+  <%= f.hidden_field :step_number, value: 5, class: "step_number_field", name: "project_step_form[step_number][]" %>
+  <%= f.label :todo_ids, "To Doを選択" %>
+  <div class="step_todos">
+    <% Todo.all.each do |todo| %>
+      <div class="checkbox">
+        <%= check_box_tag "project_step_form[todo_ids][5][]", todo.id, false, id: "step_5_todo_#{todo.id}" %>
+        <%= label_tag "step_5_todo_#{todo.id}", todo.title %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
     </div>
 
-    <div class="project_new_border">
-    </div>
+    <button type="button" id="add_step_button">Add Step</button>
+
+    <div class="project_new_border"></div>
 
     <div class="project_form_preview">
       <span>Stepプレビュー</span>
     </div>
 
-      <%= f.submit "登録する", class: "submit-button" %>
-    </div>
-    <%end%>
+    <%= f.submit "登録する", class: "submit-button" %>
+    <% end %>
   </div>
-
-
-
 
   <div class="confirm">
     <%= link_to "一覧を確認する", projects_path %>
   </div>
 </div>
+
+<script>
+  let currentStep = 1;
+
+  document.getElementById('add_step_button').addEventListener('click', function() {
+    const nextStep = currentStep + 1;
+    const stepBlock = document.getElementById(`step_${nextStep}`);
+    
+    if (stepBlock) {
+      stepBlock.style.display = 'block'; // 次のステップを表示
+      currentStep++; // 現在のステップを更新
+    }
+  });
+</script>

@@ -10,6 +10,11 @@
         </div>
 
         <div class="form-group">
+        <%= f.label :genre, "種類" %>
+        <%= f.collection_select(:genre_id, Genre.all , :id, :name, {}, {class:"select-box", id:"todo-genre"}) %>
+        </div>
+
+        <div class="form-group">
           <%= f.label :start_date, "開始日" %>
           <%= f.date_field :start_date, class: "date-field", placeholder: "開始日" %>
         </div>

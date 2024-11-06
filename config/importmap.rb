@@ -6,7 +6,10 @@ pin "@hotwired/stimulus", to: "stimulus.min.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "menu", to:"menu.js"
-pin "step", to:"step.js"
-pin "step2", to:"step2.js"
-pin "step3", to:"step3.js"
+pin "add_delete_step", to:"add_delete_step.js"
+pin "todo_search", to:"todo_search.js"
+pin "new_todo", to:"new_todo.js"
+pin "step_selection", to:"step_selection.js"
+pin "test", to:"test.js"
+
 

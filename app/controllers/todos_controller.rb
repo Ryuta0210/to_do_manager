@@ -1,5 +1,7 @@
 class TodosController < ApplicationController
   def index
+    @todos = Todo.all.map { |todo| { id: todo.id, title: todo.title.truncate(10, omission: '...') } }
+    render json: { todos: @todos.as_json(only: [:id, :title]) }
   end
 
   def my_todos
@@ -12,10 +14,17 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
-    @todo.save
-    params[:room][:user_ids].each do |user_id|
-      TodoUser.create(todo_id: @todo.id, user_id: user_id)
-    
+
+    if @todo.save
+      # ユーザーIDの配列を順に処理し、TodoUserレコードを作成
+      if params[:room][:user_ids].present?
+        params[:room][:user_ids].each do |user_id|
+          TodoUser.create(todo_id: @todo.id, user_id: user_id)
+        end
+      end
+      render json: { todo: @todo, message: "Todo created successfully" }, status: :created
+    else
+      render json: { error: @todo.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -24,7 +33,8 @@ class TodosController < ApplicationController
   end
 
   private
+
   def todo_params
-    params.require(:todo).permit(:title, :content, :genre_id, :start_date,:dead_date)
+    params.require(:todo).permit(:title, :content, :start_date, :dead_date, :user_id, :genre_id)
   end
 end

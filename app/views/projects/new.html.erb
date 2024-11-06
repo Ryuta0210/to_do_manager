@@ -2,13 +2,14 @@
   <span class="bold-text">Project 新規登録</span>
 
   <div class="project_form">
+  <%= form_with model: @project_step, url: projects_path, local: true, html: { class: "project_new_form" } do |f| %>
     <div class="project_form_head">
       <div class="project_form_left">
-        <%= form_with model: @project_step, url: projects_path, local: true, html: { class: "project_new_form" } do |f| %>
 
+        <button id="test_button">タイトル</button>
         <div class="project_form_a">
           <%= f.label :name, "タイトル" %>
-          <%= f.text_field :name, class: "project_name" %>
+          <%= f.text_field :name, class: "project_name", id: "project_name"  %>
         </div>
 
         <div class="project_form_b">
@@ -16,7 +17,7 @@
           <div class="project_form_b_bottom">
             <div class="project_users_choice">
               <% User.all.each do |user| %>
-                <div class="checkbox">
+                <div class="user_checkbox">
                   <%= f.check_box :user_ids, { multiple: true }, user.id, nil %>
                   <%= user.full_name %>
                 </div>
@@ -45,13 +46,15 @@
             <div class="todo-search">
               <input type="text" class="todo-search-input" data-step="<%= step %>" placeholder="ToDoを検索">
             </div>
+            <button class="update-todo" data-step="<%= step %>">Todoを更新する</button>
+
             <div class=checkboxes>
-            <% Todo.all.each do |todo| %>
-              <div class="checkbox">
+              <% Todo.all.each do |todo| %>
+                <div class="checkbox">
                 <%= check_box_tag "project_step_form[todo_ids][#{step}][]", todo.id, false, id: "step_#{step}_todo_#{todo.id}", class: "step_todo_checkbox", data: { step: step } %>
                 <%= label_tag "step_#{step}_todo_#{todo.id}", todo.title.truncate(10, omission: '...') %>
-              </div>
-            <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -60,6 +63,7 @@
 
     <button type="button" id="add_step_button">Add Step</button>
     <button type="button" id="delete_step_button">Delete Step</button>
+    <button type="button" id="new_todo">New To Do</button>
 
     <div class="project_new_border"></div>
 
@@ -74,22 +78,8 @@
       </div>
     </div>
 
-    <div class="original_sign">
-      <div class="original_sign1">
-        <div class=original_sign1_top>
-          <div class="original_sign1_top_a"></div>
-          <div class="original_sign1_top_b"></div>
-        </div>
-        <div class="original_sign1_bottom"></div>
-      </div>
-
-      <div class="original_sign2"></div>
-    </div>
-
-    <div class="triangle-up"></div>
-
     <%= f.submit "登録する", class: "submit-button", id: "submit_button" %>
-    <% end %>
+  <% end %>
   </div>
 
   <div class="confirm">
@@ -97,3 +87,40 @@
   </div>
 </div>
 
+<div id="todo-popup" class="popup" style="display: none;">
+  <div class="popup-content">
+    <span class="close-popup">&times;</span>
+    <h3>New To Do</h3>
+    <form id="new-todo-form" action="/todos" method="post">
+      <label for="todo-title">Title</label>
+      <input type="text" id="todo-title" name="todo[title]" required>
+
+      <label for="genre_id">種類</label>
+      <select id="genre_id" name="todo[genre_id]" required>
+        <% Genre.all.each do |genre| %>
+          <option value="<%= genre.id %>"><%= genre.name %></option>
+        <% end %>
+      </select>
+
+      <label for="todo-start_date">Start Date</label>
+      <input type="date" id="todo-start_date" name="todo[start_date]" required>
+
+      <label for="todo-dead_date">Dead Date</label>
+      <input type="date" id="todo-dead_date" name="todo[dead_date]" required>
+
+      <label for="todo-description">Description</label>
+      <textarea id="todo-description" name="todo[content]"></textarea>
+
+
+      <label for="todo-user_id">User</label>
+      <select id="todo-user_id" name="room[user_ids][]" required>
+        <option value="">Select User</option>
+        <% User.all.each do |user| %>
+          <option value="<%= user.id %>"><%= user.full_name %></option>
+        <% end %>
+      </select>
+
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>

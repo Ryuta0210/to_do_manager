@@ -100,24 +100,34 @@
 }
 
 .step_todos {
-  flex-wrap: wrap;
   gap: 10px; /* チェックボックス間のスペースを調整 */
   width: 95%;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 4px;
-  height: 100px;
-  overflow: scroll;
+  height: 120px;
+  padding: 10px;
+}
+
+.step_todos_top{
+  display: flex;
 }
 
 .todo-search{
-  margin-left: 5px;
+  margin-left: 10px;
+}
+
+.todo-search-input{
+  height: 25px;
 }
 
 .checkboxes {
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   margin-right: 10px; /* チェックボックスとラベルの間のスペース */
+  overflow: scroll;
+  height: 90px;
 }
 
 .project_form_preview{

@@ -95,8 +95,7 @@ body{
 }
 
 .main_view_projects{
-  height: 200px;
-  overflow: scroll;
+  height: 20vh;
 }
 
 .main_view_border{
@@ -108,15 +107,30 @@ body{
 .main_view_todos{
   margin: 15px 0px 0 30px;
   font-weight: bold;
+  height: 50vh;
 }
 
-.main_view_todo_list_box, .main_view_project_list_box{
-  height: 300px;
+.main_view_project_list_box{
+  height: 170px;
   width: calc(100vw - 170px);
   margin-top: 10px;
   font-weight:normal;
   overflow: scroll;
 }
+
+.main_view_todo_list_box{
+  height: 80%;
+  width: calc(100vw - 170px);
+  margin-top: 10px;
+  font-weight:normal;
+  overflow: scroll;
+}
+
+td a{
+  text-decoration: none;
+  color: black;
+}
+
 
 .todo_table, .project_table {
   border: 2px solid #a3a3a3; /* テーブル全体の枠線を青色に */
@@ -135,20 +149,30 @@ body{
   text-overflow: ellipsis; 
 }
 
+.project_members a{
+  font-size: 8px;
+}
+
+
 
 .todo_table, .project_table {
   width: 100%;
 }
 
-.todo_checkbox, .project_checkbox{
+.todo_checkbox{
   width: 8% ;
 }
+
 .todo_title, .project_title {
   width: 20%; /* タイトルの列幅を20%に設定 */
 }
 
 .todo_content, .project_description {
   width: 60%; /* 内容の列幅を60%に設定 */
+}
+
+.project_description {
+  width: 40%; /* 内容の列幅を60%に設定 */
 }
 
 .todo_deadline, .project_progress {

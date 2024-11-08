@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_25_020929) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_07_134016) do
   create_table "project_todos", charset: "utf8", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.bigint "todo_id", null: false
@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_25_020929) do
     t.date "dead_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|

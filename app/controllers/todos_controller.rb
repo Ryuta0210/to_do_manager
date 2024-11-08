@@ -2,6 +2,7 @@ class TodosController < ApplicationController
   def index
     @todos = Todo.all.map { |todo| { id: todo.id, title: todo.title.truncate(10, omission: '...') } }
     render json: { todos: @todos.as_json(only: [:id, :title]) }
+    @calendar
   end
 
   def my_todos

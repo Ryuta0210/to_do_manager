@@ -6,20 +6,20 @@
       <table border="1" cellspacing="0" cellpadding="10" class="project_table">
       <thead>
       <tr>
-        <th class="project_checkbox">選択</th>
         <th class="project_title">タイトル</th>
         <th class="project_description">内容</th>
+        <th class="project_member">メンバー</th>
         <th class="project_progress">進捗率</th>
       </tr>
       </thead>
       <tbody>
       <% @projects.each do |project| %>
         <tr>
-          <td class="project_checkbox">
-            <input type="checkbox" id="project_<%= project.id %>" name="project_<%= project.id %>">
+          <td class="project_title"><%= link_to project.name, project_path(project.id) %></td>
+          <td class="project_description"><%= link_to project.description, project_path(project.id) %></td>
+          <td class="project_members">
+            <%= project.users.map { |user| link_to user.full_name, project_path(project.id) }.join(" , ").html_safe %>
           </td>
-          <td class="project_title"><%= project.name %></td>
-          <td class="project_description"><%= project.description %></td>
           <td class="project_progress"></td>
         </tr>
       <% end %>
@@ -32,7 +32,7 @@
   </div>
 
   <div class="main_view_todos">
-    <span>■ 本日のTo Do</span>
+    <span>■ 本日までのTo Do</span>
 
     <div class="main_view_todo_list_box">
       <table border="1" cellspacing="0" cellpadding="10" class="todo_table">
@@ -50,8 +50,8 @@
           <td class="todo_checkbox">
             <input type="checkbox" id="todo_<%= todo.id %>" name="todo_<%= todo.id %>">
           </td>
-          <td class="todo_title"><%= todo.title %></td>
-          <td class="todo_content"><%= todo.content %></td>
+          <td class="todo_title"><%= link_to todo.title, todo_path(todo.id) %></td>
+          <td class="todo_content"><%= link_to todo.content, todo_path(todo.id) %></td>
           <td class="todo_deadline small-text"><%= todo.dead_date %></td>
         </tr>
       <% end %>

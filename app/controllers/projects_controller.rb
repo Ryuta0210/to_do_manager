@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     @project_step = ProjectStepForm.new(project_params)
 
     if @project_step.save
-      redirect_to projects_path, notice: 'プロジェクトが作成されました。'
+      redirect_to my_projects_projects_path
     else
       render :new, status: :unprocessable_entity
     end

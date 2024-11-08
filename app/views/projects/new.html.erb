@@ -43,10 +43,13 @@
           <%= f.label :todo_ids, "To Doを選択" %>
 
           <div class="step_todos">
-            <div class="todo-search">
-              <input type="text" class="todo-search-input" data-step="<%= step %>" placeholder="ToDoを検索">
+            <div class="step_todos_top">
+              <button class="update-todo" data-step="<%= step %>">Todoを更新する</button>
+              <div class="todo-search">
+                <input type="text" class="todo-search-input" data-step="<%= step %>" placeholder="ToDoを検索">
+              </div>
+
             </div>
-            <button class="update-todo" data-step="<%= step %>">Todoを更新する</button>
 
             <div class=checkboxes>
               <% Todo.all.each do |todo| %>

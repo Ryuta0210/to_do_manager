@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :todos do
     collection do
       get 'my_todos', to: 'todos#my_todos'
+      post "update_completed", to: 'todos#update_completed'
     end
   end
 

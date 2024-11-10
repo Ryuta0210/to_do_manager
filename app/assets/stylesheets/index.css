@@ -111,7 +111,7 @@ body{
 }
 
 .main_view_project_list_box{
-  height: 170px;
+  height: 90%;
   width: calc(100vw - 170px);
   margin-top: 10px;
   font-weight:normal;
@@ -154,13 +154,16 @@ td a{
 }
 
 
-
 .todo_table, .project_table {
   width: 100%;
 }
 
 .todo_checkbox{
-  width: 8% ;
+  width: 3% ;
+}
+
+.todo_done{
+  width: 3% ;
 }
 
 .todo_title, .project_title {
@@ -181,4 +184,8 @@ td a{
 
 .small-text{
   font-size: 10px;
+}
+
+.completed-todo{
+  background-color: grey;
 }

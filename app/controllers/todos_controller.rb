@@ -5,6 +5,17 @@ class TodosController < ApplicationController
     @calendar
   end
 
+  def update_completed
+    selected_todos = JSON.parse(params[:selected_todos])
+    todos = Todo.where(id: selected_todos)
+    
+    todos.each do |todo|
+    todo.update(completed: 1)
+    end
+    
+    render json: todos
+  end
+
   def my_todos
     @todos = current_user.todos
   end

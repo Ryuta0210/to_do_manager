@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const closePopupButton = document.querySelector(".close-popup");
   const todoForm = document.getElementById("new-todo-form");
 
+  if (!todoPopup) return
   // ポップアップを表示
   newTodoButton.addEventListener("click", () => {
     todoPopup.style.display = "block";

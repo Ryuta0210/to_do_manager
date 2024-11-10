@@ -10,6 +10,6 @@ pin "add_delete_step", to:"add_delete_step.js"
 pin "todo_search", to:"todo_search.js"
 pin "new_todo", to:"new_todo.js"
 pin "step_selection", to:"step_selection.js"
-pin "test", to:"test.js"
+pin "completed", to:"completed.js"
 
 

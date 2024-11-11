@@ -34,11 +34,18 @@
   <div class="main_view_todos">
     <span>■ 本日までのTo Do</span>
 
+    <div class="main_view_buttons">
+      <button id="main_view_done_button">Complete登録</button>
+      <button id="main_view_done_relerease_button">Complete解除</button>
+      <button id="main_view_delete_button">削除</button>
+    </div>
+
     <div class="main_view_todo_list_box">
       <table border="1" cellspacing="0" cellpadding="10" class="todo_table">
       <thead>
       <tr>
         <th class="todo_checkbox">選択</th>
+        <th class="todo_done">済</th>
         <th class="todo_title">タイトル</th>
         <th class="todo_content">内容</th>
         <th class="todo_deadline">締切日</th>
@@ -46,14 +53,17 @@
       </thead>
       <tbody>
       <% @todos.each do |todo| %>
-        <tr>
+        <tr class="<%= 'completed-todo' if todo.completed %>">
           <td class="todo_checkbox">
             <input type="checkbox" id="todo_<%= todo.id %>" name="todo_<%= todo.id %>">
           </td>
+          <td class="todo_done"><%= todo.completed ? '済': '' %></th>
           <td class="todo_title"><%= link_to todo.title, todo_path(todo.id) %></td>
           <td class="todo_content"><%= link_to todo.content, todo_path(todo.id) %></td>
           <td class="todo_deadline small-text"><%= todo.dead_date %></td>
         </tr>
+
+        
       <% end %>
       </tbody>
       </table>
@@ -62,3 +72,13 @@
   </div>
 </div>
 
+<div id="main_view_popup" class="popup" style="display: none;">
+  <div class="main_view_popup_content">
+    <span class="close-popup">&times;</span>
+    <span>本当に削除しますか？</span>
+    <div class="delete_confirmation">
+      <button id="delete_yes">Yes</button>
+      <button id="delete_no">No</button>
+    </div>
+  </div>
+</div>

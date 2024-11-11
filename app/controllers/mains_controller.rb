@@ -6,7 +6,6 @@ class MainsController < ApplicationController
     @todos =  current_user_todos
               .where("dead_date<=?", today)
               .order(completed: :asc, dead_date: :asc)
-
     @projects = current_user.projects
   end
 end

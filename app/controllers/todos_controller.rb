@@ -5,6 +5,27 @@ class TodosController < ApplicationController
     @calendar
   end
 
+  def register_complete
+    selected_todos = JSON.parse(params[:selected_todos])
+    todos = Todo.where(id: selected_todos)
+    
+    todos.each do |todo|
+    todo.update(completed: 1)
+    end
+    
+    render json: todos
+  end
+
+  def release_complete
+    selected_todos = JSON.parse(params[:selected_todos])
+    todos = Todo.where(id:selected_todos)
+
+    todos.each do |todo|
+      todo.update(completed: 0)
+    end
+    render json: todos
+  end
+
   def my_todos
     @todos = current_user.todos
   end
@@ -31,6 +52,13 @@ class TodosController < ApplicationController
 
   def show
     @todo = Todo.find(params[:id])
+  end
+
+  def destroy_selected
+    selected_todos = params[:selected_todos]
+    Todo.where(id: selected_todos).destroy_all
+  
+    render json: { message: "削除が完了しました", status: :ok }
   end
 
   private

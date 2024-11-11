@@ -4,24 +4,21 @@ document.addEventListener("DOMContentLoaded", function() {
   const closePopupButton = document.querySelector(".close-popup");
   const todoForm = document.getElementById("new-todo-form");
 
-  // ポップアップを表示
+  if (!todoPopup) return
   newTodoButton.addEventListener("click", () => {
     todoPopup.style.display = "block";
   });
 
-  // ポップアップを閉じる
   closePopupButton.addEventListener("click", () => {
     todoPopup.style.display = "none";
   });
 
-  // ポップアップ外をクリックした場合も閉じる
   window.addEventListener("click", (e) => {
     if (e.target === todoPopup) {
       todoPopup.style.display = "none";
     }
   });
 
-  // フォーム送信時の非同期処理
   todoForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -34,9 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     XHR.onload = () => {
       if (XHR.status === 200) {
-        // フォームの内容をリセット
         todoForm.reset();
-        // ポップアップを閉じる
         todoPopup.style.display = "none";
       } else {
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
